@@ -35,6 +35,7 @@ environment:
 
 # Install NuGet to interact with the PowerShell Gallery
 install:
+  - git clone https://github.com/PowerShell/DscResource.Tests
   - ps: . .\tests\install.ps1
 
 # Invoke Pester to run all of the unit tests, then save the results into XML in order to populate the AppVeyor tests section

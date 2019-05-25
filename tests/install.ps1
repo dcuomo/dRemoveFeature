@@ -1,4 +1,3 @@
-
 [string[]]$PowerShellModules = @("Pester", 'posh-git')
 [string[]]$PackageProviders = @('NuGet', 'PowerShellGet')
 
@@ -17,5 +16,6 @@ ForEach ($Module in $PowerShellModules) {
     If (!(Get-Module -ListAvailable $Module -ErrorAction SilentlyContinue)) {
         Install-Module $Module -Scope CurrentUser -Force -Repository PSGallery
     }
+    
     Import-Module $Module
 }
