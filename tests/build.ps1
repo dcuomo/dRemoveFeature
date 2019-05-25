@@ -32,8 +32,8 @@ else
         $splat = @{
             'Path'              = $manifestPath
             'ModuleVersion'     = $newVersion
-            'FunctionsToExport' = $functionList
-            'Copyright'         = "(c) 2015-$( (Get-Date).Year ) Inc. All rights reserved."
+            #'FunctionsToExport' = $functionList
+            'Copyright'         = "(c) $( (Get-Date).Year ) Inc. All rights reserved."
         }
         Update-ModuleManifest @splat
         (Get-Content -Path $manifestPath) -replace 'PSGet_dRemoveFeature', 'dRemoveFeature' | Set-Content -Path $manifestPath
