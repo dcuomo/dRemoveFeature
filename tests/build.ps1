@@ -49,7 +49,7 @@ else
     # Publish the new version to the PowerShell Gallery
     Try
     {
-        Write-Output Get-ChildItem
+        Get-ChildItem
         # Build a splat containing the required details and make sure to Stop for errors which will trigger the catch
         $PM = @{
             Path        = '.\dRemoveFeature'
