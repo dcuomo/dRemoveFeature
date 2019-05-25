@@ -34,7 +34,7 @@ environment:
     secure: BTbC1Dgv/DE7g/n+/emm4FiSiRTjsRYnsqRUiF2NEhuwHvKkS35zCRsFm27g8OR4
 
 
-# Install NuGet to interact with the PowerShell Gallery
+# Install NuGet to interact with the PowerShell Gallery 
 install:
   #- git clone https://github.com/PowerShell/DscResource.Tests
   - ps: . .\tests\install.ps1
