@@ -42,7 +42,7 @@ else
         (Get-Content -Path $manifestPath) -replace 'NewManifest', 'dRemoveFeature' | Set-Content -Path $manifestPath
         write-output 't3'
         #(Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
-        (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
+        #(Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
         write-output 't4'
     }
     catch
