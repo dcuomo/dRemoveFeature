@@ -7,7 +7,6 @@ Describe DescribeTest {
             $true | Should be $true
         }
 
-        CodeCovTest1
         It "Should run CodeCov1" {
             $true | Should be $true
         }
