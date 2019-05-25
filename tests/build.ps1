@@ -18,7 +18,7 @@ else
     Try
     {
         # This is where the module manifest lives
-        $manifestPath = '..\Start-CPUBurn.psd1'
+        $manifestPath = '.\Start-CPUBurn.psd1'
 
         # Start by importing the manifest to determine the version, then add 1 to the revision
         $manifest = Test-ModuleManifest -Path $manifestPath
@@ -28,7 +28,7 @@ else
         Write-Output "New Version: $newVersion"
 
         # Update the manifest with the new version value and fix the weird string replace bug
-        $functionList = ((Get-ChildItem -Path .\Rubrik\Public).BaseName)
+        $functionList = ((Get-ChildItem -Path .\Start-CPUBurn\Public).BaseName)
         $splat = @{
             'Path'              = $manifestPath
             'ModuleVersion'     = $newVersion
@@ -36,8 +36,8 @@ else
             'Copyright'         = "(c) 2015-$( (Get-Date).Year ) Rubrik, Inc. All rights reserved."
         }
         Update-ModuleManifest @splat
-        (Get-Content -Path $manifestPath) -replace 'PSGet_Rubrik', 'Rubrik' | Set-Content -Path $manifestPath
-        (Get-Content -Path $manifestPath) -replace 'NewManifest', 'Rubrik' | Set-Content -Path $manifestPath
+        (Get-Content -Path $manifestPath) -replace 'PSGet_Start-CPUBurn', 'Start-CPUBurn' | Set-Content -Path $manifestPath
+        (Get-Content -Path $manifestPath) -replace 'NewManifest', 'Start-CPUBurn' | Set-Content -Path $manifestPath
         (Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
         (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
     }
@@ -46,29 +46,21 @@ else
         throw $_
     }
 
-    # Create new markdown and XML help files
-    Write-Host "Building new function documentation" -ForegroundColor Yellow
-    Import-Module -Name "$PSScriptRoot\..\Rubrik" -Force
-    New-MarkdownHelp -Module Rubrik -OutputFolder '.\docs\reference\' -Force
-    New-ExternalHelp -Path '.\docs\reference\' -OutputPath '.\Rubrik\en-US\' -Force
-    . .\tests\docs.ps1
-    Write-Host -Object ''
-
     # Publish the new version to the PowerShell Gallery
     Try
     {
         # Build a splat containing the required details and make sure to Stop for errors which will trigger the catch
         $PM = @{
-            Path        = '.\Rubrik'
+            Path        = '.\Start-CPUBurn'
             NuGetApiKey = $env:NuGetApiKey
             ErrorAction = 'Stop'
         }
+
         Publish-Module @PM
-        Write-Host "Rubrik PowerShell Module version $newVersion published to the PowerShell Gallery." -ForegroundColor Cyan
+        Write-Host "Start-CPUBurn PowerShell Module version $newVersion published to the PowerShell Gallery." -ForegroundColor Cyan
     }
     Catch
     {
-        # Sad panda; it broke
         Write-Warning "Publishing update $newVersion to the PowerShell Gallery failed."
         throw $_
     }
@@ -85,7 +77,7 @@ else
         git status
         git commit -s -m "Update version to $newVersion"
         git push origin master
-        Write-Host "Rubrik PowerShell Module version $newVersion published to GitHub." -ForegroundColor Cyan
+        Write-Host "Start-CPUBurn PowerShell Module version $newVersion published to GitHub." -ForegroundColor Cyan
     }
     Catch
     {
