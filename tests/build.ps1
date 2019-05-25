@@ -65,7 +65,7 @@ else
         Write-Warning "Publishing update $newVersion to the PowerShell Gallery failed."
         throw $_
     }
-<#
+
     # Publish the new version back to Master on GitHub 
     Try
     {
@@ -85,5 +85,5 @@ else
         # Sad panda; it broke
         Write-Warning "Publishing update $newVersion to GitHub failed."
         throw $_
-    }#>
+    }
 }
