@@ -18,7 +18,7 @@ else
     Try
     {
         # This is where the module manifest lives
-        $manifestPath = '.\Start-CPUBurn.psd1'
+        $manifestPath = '.\dRemoveFeature.psd1'
 
         # Start by importing the manifest to determine the version, then add 1 to the revision
         Get-CHildItem $PWD
@@ -29,7 +29,7 @@ else
         Write-Output "New Version: $newVersion"
 
         # Update the manifest with the new version value and fix the weird string replace bug
-        $functionList = ((Get-ChildItem -Path .\Start-CPUBurn\Public).BaseName)
+        $functionList = ((Get-ChildItem -Path .\dRemoveFeature\Public).BaseName)
         $splat = @{
             'Path'              = $manifestPath
             'ModuleVersion'     = $newVersion
@@ -37,8 +37,8 @@ else
             'Copyright'         = "(c) 2015-$( (Get-Date).Year ) Rubrik, Inc. All rights reserved."
         }
         Update-ModuleManifest @splat
-        (Get-Content -Path $manifestPath) -replace 'PSGet_Start-CPUBurn', 'Start-CPUBurn' | Set-Content -Path $manifestPath
-        (Get-Content -Path $manifestPath) -replace 'NewManifest', 'Start-CPUBurn' | Set-Content -Path $manifestPath
+        (Get-Content -Path $manifestPath) -replace 'PSGet_dRemoveFeature', 'dRemoveFeature' | Set-Content -Path $manifestPath
+        (Get-Content -Path $manifestPath) -replace 'NewManifest', 'dRemoveFeature' | Set-Content -Path $manifestPath
         (Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
         (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
     }
@@ -52,13 +52,13 @@ else
     {
         # Build a splat containing the required details and make sure to Stop for errors which will trigger the catch
         $PM = @{
-            Path        = '.\Start-CPUBurn'
+            Path        = '.\dRemoveFeature'
             NuGetApiKey = $env:NuGetApiKey
             ErrorAction = 'Stop'
         }
 
         Publish-Module @PM
-        Write-Host "Start-CPUBurn PowerShell Module version $newVersion published to the PowerShell Gallery." -ForegroundColor Cyan
+        Write-Host "dRemoveFeature PowerShell Module version $newVersion published to the PowerShell Gallery." -ForegroundColor Cyan
     }
     Catch
     {
@@ -78,7 +78,7 @@ else
         git status
         git commit -s -m "Update version to $newVersion"
         git push origin master
-        Write-Host "Start-CPUBurn PowerShell Module version $newVersion published to GitHub." -ForegroundColor Cyan
+        Write-Host "dRemoveFeature PowerShell Module version $newVersion published to GitHub." -ForegroundColor Cyan
     }
     Catch
     {
