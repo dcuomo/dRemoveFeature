@@ -66,7 +66,7 @@ else
         throw $_
     }
 
-    # Publish the new version back to Master on GitHub
+    # Publish the new version back to Master on GitHub 
     Try
     {
         # Set up a path to the git.exe cmd, import posh-git to give us control over git, and then push changes to GitHub
