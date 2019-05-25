@@ -36,14 +36,10 @@ else
             'Copyright'         = "(c) $( (Get-Date).Year ) Inc. All rights reserved."
         }
         Update-ModuleManifest @splat
-        write-output 't1'
         (Get-Content -Path $manifestPath) -replace 'PSGet_dRemoveFeature', 'dRemoveFeature' | Set-Content -Path $manifestPath
-        write-output 't2'
         (Get-Content -Path $manifestPath) -replace 'NewManifest', 'dRemoveFeature' | Set-Content -Path $manifestPath
-        write-output 't3'
         #(Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
         #(Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
-        write-output 't4'
     }
     catch
     {

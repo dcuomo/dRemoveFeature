@@ -8,7 +8,7 @@
 build: off
 
 # Version number
-version: 4.0.0.{build}
+version: 1.0.0.{build}
 
 # Ignore testing a commit if only the README.md file changed
 # Or if various strings are found in the commit message: updated readme, update readme, update docs, update version, update appveyor
@@ -20,6 +20,8 @@ skip_commits:
 # There's no need to alter the build number for a Pull Request (PR) since they don't modify anything
 pull_requests:
   do_not_increment_build_number: true
+
+clone_folder: c:\projects\dRemoveFeature
 
 # PowerShell Gallery API key for publishing an update to the module
 # The "secure:" value is the Appveyor encryption of the key
