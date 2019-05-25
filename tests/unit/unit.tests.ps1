@@ -1,6 +1,6 @@
 $PWD
 
-.\something.ps1
+.\tests\unit\something.ps1
 Describe DescribeTest {
     Context ContextTest {
         It "Should be pass" {
