@@ -7,5 +7,3 @@ Function CodeCovTest1 {
 Function CodeCovTest2 {
     Write-Output 'Test2'
 }
-
-CodeCovTest1
