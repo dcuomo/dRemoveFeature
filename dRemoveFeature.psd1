@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2015 Administrator. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'This module allows you to remove Windows features'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''
