@@ -36,12 +36,18 @@ environment:
 
 # Install NuGet to interact with the PowerShell Gallery 
 install:
-  #- git clone https://github.com/PowerShell/DscResource.Tests
+  - git clone https://github.com/PowerShell/DscResource.Tests
+  - ps: Import-Module -Name "$env:APPVEYOR_BUILD_FOLDER\DscResource.Tests\AppVeyor.psm1"
+  - ps: Invoke-AppveyorInstallTask
   - ps: . .\tests\install.ps1
+
+    
 
 # Invoke Pester to run all of the unit tests, then save the results into XML in order to populate the AppVeyor tests section
 # If any of the tests fail, consider the pipeline failed
 # git commands: https://www.appveyor.com/docs/how-to/git-push/
+# Additional Code Coverage Examples
+# https://info.sapien.com/index.php/scripting/scripting-modules/testing-pester-code-coverage
 test_script:
   - ps: $res = Invoke-Pester -Path ".\tests\unit" -OutputFormat NUnitXml -OutputFile .\tests\results\TestsResults.xml -PassThru -CodeCoverage .\tests\unit\something.ps1
   - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\tests\results\TestsResults.xml))
