@@ -52,7 +52,7 @@ else
         Get-ChildItem
         # Build a splat containing the required details and make sure to Stop for errors which will trigger the catch
         $PM = @{
-            Path        = '.\dRemoveFeature'
+            Path        = '.'
             NuGetApiKey = $env:NuGetApiKey
             ErrorAction = 'Stop'
         }
