@@ -21,6 +21,7 @@ else
         $manifestPath = '.\Start-CPUBurn.psd1'
 
         # Start by importing the manifest to determine the version, then add 1 to the revision
+        write-host $PWD
         $manifest = Test-ModuleManifest -Path $manifestPath
         [System.Version]$version = $manifest.Version
         Write-Output "Old Version: $version"
