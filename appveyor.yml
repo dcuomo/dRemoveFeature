@@ -22,7 +22,7 @@ pull_requests:
   do_not_increment_build_number: true
 
 clone_folder: c:\projects\dRemoveFeature
- 
+
 # PowerShell Gallery API key for publishing an update to the module
 # The "secure:" value is the Appveyor encryption of the key
 # Encrypting Variables http://wahlnetwork.com/2016/07/19/encrypting-environmental-variables-with-appveyor/
@@ -31,7 +31,7 @@ environment:
   NuGetApiKey:
     secure: 8zTIgzkh0lIeJ+PZRLSS047LFbQqLbbm2YDdqwgTs4ctfGKtZAKQNDyEtn2geNtq
   GitHubKey:
-    secure: BTbC1Dgv/DE7g/n+/emm4FiSiRTjsRYnsqRUiF2NEhuwHvKkS35zCRsFm27g8OR4
+    secure: BTbC1Dgv/DE7g/n+/emm4FiSiRTjsRYnsqRUiF2NEhuwHvKkS35zCRsFm27g8OR4\
 
 # Install NuGet to interact with the PowerShell Gallery
 install:
@@ -52,4 +52,3 @@ test_script:
   - git config --global core.autocrlf true
   - git config --global core.safecrlf false
   - ps: . .\tests\build.ps1
-  
