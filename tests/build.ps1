@@ -73,11 +73,9 @@ else
         # Note that "update version" is included in the appveyor.yml file's "skip a build" regex to avoid a loop
         $env:Path += ";$env:ProgramFiles\Git\cmd"
         Import-Module posh-git -ErrorAction Stop
-        $PWD
-        Get-ChildItem
         #git rm --cached DscResource.Tests
         git checkout master -q
-        git add --all
+        git add -q --all
         git status
         git commit -s -m "Update version to $newVersion"
         git push origin master -q
