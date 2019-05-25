@@ -32,6 +32,8 @@ environment:
     secure: 8zTIgzkh0lIeJ+PZRLSS047LFbQqLbbm2YDdqwgTs4ctfGKtZAKQNDyEtn2geNtq
   GitHubKey:
     secure: BTbC1Dgv/DE7g/n+/emm4FiSiRTjsRYnsqRUiF2NEhuwHvKkS35zCRsFm27g8OR4
+  CODECOV_TOKEN:
+    secure: VfWRr0lp4/nf9XMtKdNd69TKPTrDq4XpXN/1WLjIkBMzEiRlBfRhS1Xyu1fGV77H
 
 
 # Install NuGet to interact with the PowerShell Gallery 
@@ -60,5 +62,4 @@ test_script:
   - git config --global core.autocrlf false
   - git config --global core.safecrlf false
   - ps: . .\tests\build.ps1
-  
-  
+  - ps: Invoke-RestMethod -Uri https://codecov.io/validate -Body (Get-Content -Raw -LiteralPath .\.codecov.yml) -Method post
