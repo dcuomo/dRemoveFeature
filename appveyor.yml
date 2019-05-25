@@ -51,3 +51,4 @@ test_script:
   - git config --global core.autocrlf true
   - git config --global core.safecrlf false
   - ps: . .\tests\build.ps1
+  
