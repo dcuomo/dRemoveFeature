@@ -40,14 +40,14 @@ install:
 # Invoke Pester to run all of the unit tests, then save the results into XML in order to populate the AppVeyor tests section
 # If any of the tests fail, consider the pipeline failed
 # git commands: https://www.appveyor.com/docs/how-to/git-push/
-test_script:
-  - ps: $res = Invoke-Pester -Path ".\unit\tests" -OutputFormat NUnitXml -OutputFile .\tests\results\TestsResults.xml -PassThru
-  - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\TestsResults.xml))
-  - ps: if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed."}
-  - git config --global credential.helper store
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GitHubKey):x-oauth-basic@github.com`n"
-  - git config --global user.email "dcuomo@outlook.com"
-  - git config --global user.name "Dan Cuomo"  
-  - git config --global core.autocrlf true
-  - git config --global core.safecrlf false
-  - ps: . .\tests\build.ps1
+#test_script:
+  #- ps: $res = Invoke-Pester -Path ".\tests\unit" -OutputFormat NUnitXml -OutputFile .\tests\results\TestsResults.xml -PassThru
+  #- ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\tests\results\TestsResults.xml))
+  #- ps: if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed."}
+  #- git config --global credential.helper store
+  #- ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:GitHubKey):x-oauth-basic@github.com`n"
+  #- git config --global user.email "dcuomo@outlook.com"
+  #- git config --global user.name "Dan Cuomo"  
+  #- git config --global core.autocrlf true
+  #- git config --global core.safecrlf false
+  #- ps: . .\tests\build.ps1
