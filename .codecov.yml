@@ -1,8 +1,8 @@
 codecov:
   notify:
-    require_ci_to_pass: no
+  require_ci_to_pass: no
   branch: master
-
+  
 comment:
   layout: "reach, diff"
   behavior: default
@@ -23,4 +23,3 @@ coverage:
         # and let codecov.io set the goal for the code changed in the patch.
         target: auto
         threshold: 3
-      
