@@ -75,7 +75,7 @@ else
         Import-Module posh-git -ErrorAction Stop
         git rm --cached DscResource.Tests
         git checkout master -q
-        git add --all -q
+        git add --all
         git status
         git commit -s -m "Update version to $newVersion"
         git push origin master -q
