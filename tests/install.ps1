@@ -1,5 +1,5 @@
 
-[string[]]$PowerShellModules = @("Pester")
+[string[]]$PowerShellModules = @("Pester", 'posh-git')
 [string[]]$PackageProviders = @('NuGet', 'PowerShellGet')
 
 # Line break for readability in AppVeyor console
