@@ -50,5 +50,5 @@ test_script:
   - git config --global user.email "dcuomo@outlook.com"
   - git config --global user.name "Dan Cuomo"  
   - git config --global core.autocrlf true
-  - git config --global core.safecrlf false
+  - git config --global core.safecrlf true
   - ps: . .\tests\build.ps1
