@@ -31,7 +31,8 @@ environment:
   NuGetApiKey:
     secure: 8zTIgzkh0lIeJ+PZRLSS047LFbQqLbbm2YDdqwgTs4ctfGKtZAKQNDyEtn2geNtq
   GitHubKey:
-    secure: BTbC1Dgv/DE7g/n+/emm4FiSiRTjsRYnsqRUiF2NEhuwHvKkS35zCRsFm27g8OR4\
+    secure: BTbC1Dgv/DE7g/n+/emm4FiSiRTjsRYnsqRUiF2NEhuwHvKkS35zCRsFm27g8OR4
+
 
 # Install NuGet to interact with the PowerShell Gallery
 install:
