@@ -49,12 +49,12 @@ else
     # Publish the new version to the PowerShell Gallery
     Try
     {
-        Get-ChildItem
         # Build a splat containing the required details and make sure to Stop for errors which will trigger the catch
         $PM = @{
             Path        = '.'
             NuGetApiKey = $env:NuGetApiKey
             ErrorAction = 'Stop'
+            Force       = $true
         }
 
         Publish-Module @PM
