@@ -28,7 +28,7 @@ else
         Write-Output "New Version: $newVersion"
 
         # Update the manifest with the new version value and fix the weird string replace bug
-        $functionList = ((Get-ChildItem -Path .\dRemoveFeature\Public).BaseName)
+        $functionList = ((Get-ChildItem -Path .\dRemoveFeature).BaseName)
         $splat = @{
             'Path'              = $manifestPath
             'ModuleVersion'     = $newVersion
